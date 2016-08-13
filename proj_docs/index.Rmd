@@ -1,5 +1,5 @@
 ---
-title       : Cousera Data Products Week 3 Assignment
+title       : Coursera Data Products Week 3 Assignment
 subtitle    : Exploring a 2D normal distribution
 author      : AH
 job         : 
