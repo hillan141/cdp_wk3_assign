@@ -6,18 +6,48 @@
 #
 
 library(shiny)
+require(MASS)
 
 shinyServer(function(input, output) {
 
   output$distPlot <- renderPlot({
-
-    # generate bins based on input$bins from ui.R
-    x    <- faithful[, 2]
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
-
+    mu <- c(0,0)
+    s12 <- 0
+    if (input$xycorrel == 0) {
+      s12 <- 0    
+    } else {
+        if (input$xycorrel > 0) {
+            s12 <- min(input$s11, input$s22) * 0.9
+        } else {
+            s12 <- min(input$s11, input$s22) * -0.9
+        }
+    }
+    sigma <- matrix(as.numeric(c(input$s11, s12, s12, input$s22)), 2)
+    print(sigma)
+    binorm <- mvrnorm(input$nsample, mu = mu, Sigma = sigma )
+    # Calculate kernel density estimate
+    binorm.dens <- kde2d(binorm[,1], binorm[,2], n = 50)
+    # Contour plot overlayed on heat map image of results
+    image(binorm.dens) # , xlim=c(-10,10), ylim=c(-10,10))
+    contour(binorm.dens, add = TRUE)
+    
   })
 
+  # txt <- renderText({"The covariance matrix:"})
+  
+  output$table <- renderTable({
+    s12 <- 0
+    if (input$xycorrel == 0) {
+      s12 <- 0    
+    } else {
+      if (input$xycorrel > 0) {
+        s12 <- min(input$s11, input$s22) * 0.9
+      } else {
+        s12 <- min(input$s11, input$s22) * -0.9
+      }
+    }
+    matrix(c(input$s11, s12, s12, input$s22), 2,
+           dimnames=list(paste("s", c("x", "y"), sep=""), paste("s", c("x", "y"), sep="")))
+  })
+  
 })

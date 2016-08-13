@@ -10,21 +10,30 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("Bivariate Normal Explorer"),
 
   # Sidebar with a slider input for number of bins
   sidebarLayout(
     sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
+      sliderInput("nsample",
+                  "Number of samples:",
+                  min = 100,
+                  max = 10000,
+                  value = 100),
+      
+      numericInput("s11", label="X standard deviation", value=1, min=1, max=10, step=0.1),
+      numericInput("s22", label="Y standard deviation", value=1, min=1, max=10, step=0.1),    
+      radioButtons("xycorrel", "XY correlation", 
+                 choices=c("None" = 0, "Positive" = 1, "Negative" = -1), 
+                 selected = NULL, inline = FALSE, width = NULL)
     ),
 
     # Show a plot of the generated distribution
     mainPanel(
-      plotOutput("distPlot")
+      h3("Contour plot of distribution"),
+      plotOutput("distPlot"),
+      h3("The covariance matrix"),
+      tableOutput("table")
     )
   )
 ))

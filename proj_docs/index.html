@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Cousera Data Products Week 3 Assignment</title>
   <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="Cousera Data Products Week 3 Assignment">
+  <meta name="author" content="AH">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -32,9 +32,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1></h1>
-    <h2></h2>
-    <p><br/></p>
+    <h1>Cousera Data Products Week 3 Assignment</h1>
+    <h2>Exploring a 2D normal distribution</h2>
+    <p>AH<br/></p>
   </hgroup>
   <article></article>  
 </slide>
@@ -43,25 +43,64 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Read-And-Delete</h2>
+    <h2>Introduction (2)</h2>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
-</ol>
+    <p>The 2-dimensional normal distribution is often encountered in real-world statistics problems. This shiny application allows a user to visualize the shape and orientation of a 2D normal using a colored contour plot. The user can select the width and orientation of the underlying distribution and then interactively plot it using Shiny.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:;">
+<slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>Available Options (3)</h2>
   </hgroup>
   <article data-timings="">
-    
+    <ul>
+<li>Number of samples: select a value between 100 and 10000</li>
+<li>X standard deviation: enter a value between 1 and 10</li>
+<li>Y standard deviation: enter a value between 1 and 10</li>
+<li>XY correlation: select <strong>None</strong>, <strong>Positive</strong>, or <strong>Negative</strong>.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Quick Start (4)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Using the &quot;Number of samples&quot; slider, select a number of samples</li>
+<li>Enter the X and Y standard deviations</li>
+<li>Select the correlation </li>
+</ul>
+
+<p>A colored contour plot showing a kernel density estimate of the resulting distribution will be shown.</p>
+
+<p>Below the contour plot, the covariance matrix between X and Y is displayed.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>More details (5)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Here is an example plot for 1000 samples from a distribution with Sx=1, Sy=1, and Positive correlation:</p>
+
+<p><img src="assets/fig/plot1-1.png" alt="plot of chunk plot1"></p>
+
+<ul>
+<li>Adjusting the X and Y standard deviations will stretch the distribution in the X- or Y- direction respectively.</li>
+<li>The correlation selection changes the XY orientation of the distribution.  As X and Y correlation is increased, the distribution slants postively; if correlation is negative, the distribution will tilt the other direction.</li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -72,14 +111,26 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Read-And-Delete'>
+        data-slide=1 title='Introduction (2)'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title='Available Options (3)'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Quick Start (4)'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='More details (5)'>
+         4
       </a>
     </li>
   </ul>
