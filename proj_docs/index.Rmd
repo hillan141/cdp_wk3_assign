@@ -14,6 +14,8 @@ knit        : slidify::knit2slides
 
 The 2-dimensional normal distribution is often encountered in real-world statistics problems. This shiny application allows a user to visualize the shape and orientation of a 2D normal using a colored contour plot. The user can select the width and orientation of the underlying distribution and then interactively plot it using Shiny.
 
+To get started, go to the shiny app here: https://hillan141.shinyapps.io/cdp_wk3_assign
+
 --- 
 ## Available Options (3)
 

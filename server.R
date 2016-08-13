@@ -13,10 +13,10 @@ shinyServer(function(input, output) {
   output$distPlot <- renderPlot({
     mu <- c(0,0)
     s12 <- 0
-    if (input$xycorrel == 0) {
+    if (input$xycorrel == 'none') {
       s12 <- 0    
     } else {
-        if (input$xycorrel > 0) {
+        if (input$xycorrel == 'pos') {
             s12 <- min(input$s11, input$s22) * 0.9
         } else {
             s12 <- min(input$s11, input$s22) * -0.9
@@ -37,10 +37,10 @@ shinyServer(function(input, output) {
   
   output$table <- renderTable({
     s12 <- 0
-    if (input$xycorrel == 0) {
+    if (input$xycorrel == 'none') {
       s12 <- 0    
     } else {
-      if (input$xycorrel > 0) {
+      if (input$xycorrel == 'pos') {
         s12 <- min(input$s11, input$s22) * 0.9
       } else {
         s12 <- min(input$s11, input$s22) * -0.9

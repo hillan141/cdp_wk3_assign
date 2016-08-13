@@ -24,12 +24,13 @@ shinyUI(fluidPage(
       numericInput("s11", label="X standard deviation", value=1, min=1, max=10, step=0.1),
       numericInput("s22", label="Y standard deviation", value=1, min=1, max=10, step=0.1),    
       radioButtons("xycorrel", "XY correlation", 
-                 choices=c("None" = 0, "Positive" = 1, "Negative" = -1), 
+                 choices=c("None" = "none", "Positive" = "pos", "Negative" = "neg"), 
                  selected = NULL, inline = FALSE, width = NULL)
     ),
 
     # Show a plot of the generated distribution
     mainPanel(
+      h3(a("Click here for help", href="Bivariate_Explorer_Help.html")),
       h3("Contour plot of distribution"),
       plotOutput("distPlot"),
       h3("The covariance matrix"),

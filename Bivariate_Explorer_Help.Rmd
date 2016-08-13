@@ -1,31 +1,24 @@
 ---
-title       : Cousera Data Products Week 3 Assignment
-subtitle    : Exploring a 2D normal distribution
-author      : AH
-job         : 
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
-highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
-widgets     : []            # {mathjax, quiz, bootstrap}
-mode        : selfcontained # {standalone, draft}
-knit        : slidify::knit2slides
+title: "Bivariate_Explorer_Help"
+author: "A H"
+date: "Saturday, August 13, 2016"
+output: html_document
 ---
-## Introduction (2)
+
+## Introduction
 
 The 2-dimensional normal distribution is often encountered in real-world statistics problems. This shiny application allows a user to visualize the shape and orientation of a 2D normal using a colored contour plot. The user can select the width and orientation of the underlying distribution and then interactively plot it using Shiny.
 
 To get started, go to the shiny app here: https://hillan141.shinyapps.io/cdp_wk3_assign
 
---- 
-## Available Options (3)
+## Available Options
 
 * Number of samples: select a value between 100 and 10000
 * X standard deviation: enter a value between 1 and 10
 * Y standard deviation: enter a value between 1 and 10
 * XY correlation: select __None__, __Positive__, or __Negative__.
 
---- 
-## Quick Start (4)
+## Quick Start
 
 * Using the "Number of samples" slider, select a number of samples
 * Enter the X and Y standard deviations
@@ -35,12 +28,22 @@ A colored contour plot showing a kernel density estimate of the resulting distri
 
 Below the contour plot, the covariance matrix between X and Y is displayed.
 
---- 
-## More details (5)
+## More details
 
 Here is an example plot for 1000 samples from a distribution with Sx=1, Sy=1, and Positive correlation:
 
-![plot of chunk plot1](assets/fig/plot1-1.png)
+```{r plot1, echo=FALSE}
+require(MASS)
+mu <- c(0,0)
+sigma <- matrix(c(1, 0.3, 0.3, 1), 2)
+binorm <- mvrnorm(1000, mu = mu, Sigma = sigma )
+# Calculate kernel density estimate
+binorm.dens <- kde2d(binorm[,1], binorm[,2], n = 50)
+# Contour plot overlayed on heat map image of results
+image(binorm.dens) # , xlim=c(-10,10), ylim=c(-10,10))
+contour(binorm.dens, add = TRUE)
+```
 
 * Adjusting the X and Y standard deviations will stretch the distribution in the X- or Y- direction respectively.
 * The correlation selection changes the XY orientation of the distribution.  As X and Y correlation is increased, the distribution slants postively; if correlation is negative, the distribution will tilt the other direction.
+
